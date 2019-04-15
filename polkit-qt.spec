@@ -4,7 +4,7 @@
 #
 Name     : polkit-qt
 Version  : 1.0.112.0
-Release  : 2
+Release  : 3
 URL      : https://download.kde.org/stable/apps/KDE4.x/admin/polkit-qt-1-0.112.0.tar.bz2
 Source0  : https://download.kde.org/stable/apps/KDE4.x/admin/polkit-qt-1-0.112.0.tar.bz2
 Summary  : No detailed summary available
@@ -36,6 +36,7 @@ Summary: dev components for the polkit-qt package.
 Group: Development
 Requires: polkit-qt-lib = %{version}-%{release}
 Provides: polkit-qt-devel = %{version}-%{release}
+Requires: polkit-qt = %{version}-%{release}
 
 %description dev
 dev components for the polkit-qt package.
@@ -66,7 +67,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549302526
+export SOURCE_DATE_EPOCH=1555346493
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -74,7 +75,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549302526
+export SOURCE_DATE_EPOCH=1555346493
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-qt
 cp COPYING %{buildroot}/usr/share/package-licenses/polkit-qt/COPYING
