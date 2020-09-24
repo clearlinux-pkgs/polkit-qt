@@ -6,7 +6,7 @@
 #
 Name     : polkit-qt
 Version  : 1.0.113.0
-Release  : 5
+Release  : 6
 URL      : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz
 Source0  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz
 Source1  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz.sig
