@@ -5,24 +5,25 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : polkit-qt
-Version  : 1.0.113.0
-Release  : 6
-URL      : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz
-Source0  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz
-Source1  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.113.0.tar.xz.sig
+Version  : 1.0.114.0
+Release  : 7
+URL      : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz
+Source0  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz
+Source1  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : BSD-3-Clause GPL-2.0 LGPL-2.0
 Requires: polkit-qt-lib = %{version}-%{release}
 Requires: polkit-qt-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : extra-cmake-modules pkgconfig(glib-2.0)
+BuildRequires : extra-cmake-modules
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(polkit-agent-1)
 BuildRequires : pkgconfig(polkit-gobject-1)
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -63,15 +64,15 @@ license components for the polkit-qt package.
 
 
 %prep
-%setup -q -n polkit-qt-1-0.113.0
-cd %{_builddir}/polkit-qt-1-0.113.0
+%setup -q -n polkit-qt-1-0.114.0
+cd %{_builddir}/polkit-qt-1-0.114.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581445543
+export SOURCE_DATE_EPOCH=1624130827
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -79,19 +80,20 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1581445543
+export SOURCE_DATE_EPOCH=1624130827
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-qt
-cp %{_builddir}/polkit-qt-1-0.113.0/COPYING %{buildroot}/usr/share/package-licenses/polkit-qt/96415a46e7f11fd64ef93a25783f800c2a57a175
-cp %{_builddir}/polkit-qt-1-0.113.0/examples/COPYING %{buildroot}/usr/share/package-licenses/polkit-qt/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/polkit-qt/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/a4c60b3fefda228cd7439d3565df043192fef137
 pushd clr-build
 %make_install
 popd
@@ -113,14 +115,16 @@ popd
 /usr/include/polkit-qt5-1/PolkitQt1/Subject
 /usr/include/polkit-qt5-1/PolkitQt1/TemporaryAuthorization
 /usr/include/polkit-qt5-1/polkitqt1-actiondescription.h
+/usr/include/polkit-qt5-1/polkitqt1-agent-export.h
 /usr/include/polkit-qt5-1/polkitqt1-agent-listener.h
 /usr/include/polkit-qt5-1/polkitqt1-agent-session.h
 /usr/include/polkit-qt5-1/polkitqt1-authority.h
+/usr/include/polkit-qt5-1/polkitqt1-core-export.h
 /usr/include/polkit-qt5-1/polkitqt1-details.h
-/usr/include/polkit-qt5-1/polkitqt1-export.h
 /usr/include/polkit-qt5-1/polkitqt1-gui-action.h
 /usr/include/polkit-qt5-1/polkitqt1-gui-actionbutton.h
 /usr/include/polkit-qt5-1/polkitqt1-gui-actionbuttons.h
+/usr/include/polkit-qt5-1/polkitqt1-gui-export.h
 /usr/include/polkit-qt5-1/polkitqt1-identity.h
 /usr/include/polkit-qt5-1/polkitqt1-subject.h
 /usr/include/polkit-qt5-1/polkitqt1-temporaryauthorization.h
@@ -140,13 +144,14 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libpolkit-qt5-agent-1.so.1
-/usr/lib64/libpolkit-qt5-agent-1.so.1.113.0
+/usr/lib64/libpolkit-qt5-agent-1.so.1.114.0
 /usr/lib64/libpolkit-qt5-core-1.so.1
-/usr/lib64/libpolkit-qt5-core-1.so.1.113.0
+/usr/lib64/libpolkit-qt5-core-1.so.1.114.0
 /usr/lib64/libpolkit-qt5-gui-1.so.1
-/usr/lib64/libpolkit-qt5-gui-1.so.1.113.0
+/usr/lib64/libpolkit-qt5-gui-1.so.1.114.0
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/polkit-qt/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
-/usr/share/package-licenses/polkit-qt/96415a46e7f11fd64ef93a25783f800c2a57a175
+/usr/share/package-licenses/polkit-qt/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+/usr/share/package-licenses/polkit-qt/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/polkit-qt/a4c60b3fefda228cd7439d3565df043192fef137
