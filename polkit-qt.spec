@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : polkit-qt
-Version  : 1.0.114.0
-Release  : 8
-URL      : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz
-Source0  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz
-Source1  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz.sig
+Version  : 1.0.200.0
+Release  : 9
+URL      : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
+Source0  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz
+Source1  : https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.0
@@ -27,8 +27,6 @@ BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
 BuildRequires : pkgconfig(polkit-agent-1)
 BuildRequires : pkgconfig(polkit-gobject-1)
-BuildRequires : qtbase-dev
-BuildRequires : qtbase-dev mesa-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
@@ -71,15 +69,15 @@ license components for the polkit-qt package.
 
 
 %prep
-%setup -q -n polkit-qt-1-0.114.0
-cd %{_builddir}/polkit-qt-1-0.114.0
+%setup -q -n polkit-qt-1-0.200.0
+cd %{_builddir}/polkit-qt-1-0.200.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1710337442
+export SOURCE_DATE_EPOCH=1710441341
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,12 +138,12 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1710337442
+export SOURCE_DATE_EPOCH=1710441341
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/polkit-qt
-cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/polkit-qt/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
-cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
-cp %{_builddir}/polkit-qt-1-0.114.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/a4c60b3fefda228cd7439d3565df043192fef137 || :
+cp %{_builddir}/polkit-qt-1-0.200.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/polkit-qt/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
+cp %{_builddir}/polkit-qt-1-0.200.0/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/3e8971c6c5f16674958913a94a36b1ea7a00ac46 || :
+cp %{_builddir}/polkit-qt-1-0.200.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/polkit-qt/a4c60b3fefda228cd7439d3565df043192fef137 || :
 export GOAMD64=v2
 GOAMD64=v3
 pushd clr-build-avx2
@@ -202,15 +200,15 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libpolkit-qt5-agent-1.so.1.114.0
-/V3/usr/lib64/libpolkit-qt5-core-1.so.1.114.0
-/V3/usr/lib64/libpolkit-qt5-gui-1.so.1.114.0
+/V3/usr/lib64/libpolkit-qt5-agent-1.so.1.200.0
+/V3/usr/lib64/libpolkit-qt5-core-1.so.1.200.0
+/V3/usr/lib64/libpolkit-qt5-gui-1.so.1.200.0
 /usr/lib64/libpolkit-qt5-agent-1.so.1
-/usr/lib64/libpolkit-qt5-agent-1.so.1.114.0
+/usr/lib64/libpolkit-qt5-agent-1.so.1.200.0
 /usr/lib64/libpolkit-qt5-core-1.so.1
-/usr/lib64/libpolkit-qt5-core-1.so.1.114.0
+/usr/lib64/libpolkit-qt5-core-1.so.1.200.0
 /usr/lib64/libpolkit-qt5-gui-1.so.1
-/usr/lib64/libpolkit-qt5-gui-1.so.1.114.0
+/usr/lib64/libpolkit-qt5-gui-1.so.1.200.0
 
 %files license
 %defattr(0644,root,root,0755)
